@@ -1073,9 +1073,6 @@ class ApplicationManagerImpl
   bool CompareAppHMIType(const smart_objects::SmartObject& from_policy,
                          const smart_objects::SmartObject& from_application);
 
-  hmi_apis::HMI_API& hmi_so_factory();
-  mobile_apis::MOBILE_API& mobile_so_factory();
-
   bool ConvertSOtoMessage(const smart_objects::SmartObject& message,
                           Message& output);
 

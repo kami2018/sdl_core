@@ -172,6 +172,8 @@ class RPCHandlerImpl : public RPCHandler,
 
   hmi_apis::HMI_API hmi_so_factory_;
   mobile_apis::MOBILE_API mobile_so_factory_;
+  ns_smart_device_link_rpc::V1::v4_protocol_v1_2_no_extra
+      v4_protocol_so_factory_;
 #ifdef TELEMETRY_MONITOR
   AMTelemetryObserver* metric_observer_;
 #endif  // TELEMETRY_MONITOR

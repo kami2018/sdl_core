@@ -45,6 +45,8 @@ RPCHandlerImpl::RPCHandlerImpl(ApplicationManager& app_manager)
     , messages_from_hmi_("AM FromHMI", this)
     , hmi_so_factory_(hmi_apis::HMI_API())
     , mobile_so_factory_(mobile_apis::MOBILE_API())
+    , v4_protocol_so_factory_(
+          ns_smart_device_link_rpc::V1::v4_protocol_v1_2_no_extra())
 #ifdef TELEMETRY_MONITOR
     , metric_observer_(NULL)
 #endif  // TELEMETRY_MONITOR
@@ -372,7 +374,7 @@ bool RPCHandlerImpl::ConvertMessageToSO(
 
           smart_objects::SmartObjectSPtr msg_to_send =
               std::make_shared<smart_objects::SmartObject>(output);
-          v1_shema.attachSchema(*msg_to_send, false);
+          v4_protocol_so_factory_.attachSchema(*msg_to_send, false);
           app_manager_.GetRPCService().SendMessageToMobile(msg_to_send);
           return false;
         }
